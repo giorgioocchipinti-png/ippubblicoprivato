@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IP Pubblico e IP Privato</title>
+<style>
+body{
+    font-family:Arial,sans-serif;
+    margin:0;
+    background:#f4f6f9;
+    color:#333;
+}
+header{
+    background:#1565c0;
+    color:white;
+    padding:25px;
+    text-align:center;
+}
+main{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+section{
+    background:white;
+    margin:20px 0;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+h2{
+    color:#1565c0;
+}
+button{
+    background:#1565c0;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+button:hover{
+    background:#0d47a1;
+}
+#quiz{
+    display:none;
+}
+.question{
+    margin:20px 0;
+}
+.result{
+    font-weight:bold;
+    margin-top:20px;
+    font-size:18px;
+}
+footer{
+    text-align:center;
+    padding:20px;
+    color:#666;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>La differenza tra IP Pubblico e IP Privato</h1>
+<p>Una guida semplice per comprendere gli indirizzi IP.</p>
+</header>
+
+<main>
+
+<section>
+<h2>Cos'è un indirizzo IP?</h2>
+<p>
+Un indirizzo IP (Internet Protocol) identifica un dispositivo all'interno di una rete.
+Permette ai computer di comunicare tra loro e di inviare o ricevere dati.
+</p>
+</section>
+
+<section>
+<h2>IP Pubblico</h2>
+<ul>
+<li>È visibile su Internet.</li>
+<li>Viene assegnato dal provider Internet (ISP).</li>
+<li>Identifica la rete verso l'esterno.</li>
+<li>Può essere statico oppure dinamico.</li>
+</ul>
+</section>
+
+<section>
+<h2>IP Privato</h2>
+<ul>
+<li>Viene usato solo nella rete locale (LAN).</li>
+<li>Non è raggiungibile direttamente da Internet.</li>
+<li>È assegnato normalmente dal router tramite DHCP.</li>
+<li>Gli intervalli più comuni sono:
+<ul>
+<li>192.168.x.x</li>
+<li>10.x.x.x</li>
+<li>172.16.x.x – 172.31.x.x</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section>
+<h2>Differenze principali</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;width:100%">
+<tr>
+<th>IP Pubblico</th>
+<th>IP Privato</th>
+</tr>
+<tr>
+<td>Visibile su Internet</td>
+<td>Visibile solo nella rete locale</td>
+</tr>
+<tr>
+<td>Assegnato dal provider</td>
+<td>Assegnato dal router</td>
+</tr>
+<tr>
+<td>Univoco a livello globale</td>
+<td>Riutilizzabile in reti diverse</td>
+</tr>
+</table>
+</section>
+
+<section style="text-align:center">
+<h2>Verifica le tue conoscenze!</h2>
+<button onclick="mostraQuiz()">Apri il Test</button>
+</section>
+
+<section id="quiz">
+<h2>Mini Quiz</h2>
+
+<div class="question">
+<p>1. Quale indirizzo IP è visibile su Internet?</p>
+<label><input type="radio" name="q1" value="1"> IP Pubblico</label><br>
+<label><input type="radio" name="q1" value="0"> IP Privato</label>
+</div>
+
+<div class="question">
+<p>2. Chi assegna normalmente un IP privato?</p>
+<label><input type="radio" name="q2" value="1"> Il router</label><br>
+<label><input type="radio" name="q2" value="0"> Un sito web</label>
+</div>
+
+<div class="question">
+<p>3. Quale intervallo appartiene agli IP privati?</p>
+<label><input type="radio" name="q3" value="1"> 192.168.x.x</label><br>
+<label><input type="radio" name="q3" value="0"> 8.8.8.8</label>
+</div>
+
+<button onclick="correggi()">Controlla Risposte</button>
+
+<div id="risultato" class="result"></div>
+
+</section>
+
+</main>
+
+<footer>
+Sito divulgativo realizzato in HTML, CSS e JavaScript.
+</footer>
+
+<script>
+function mostraQuiz(){
+    document.getElementById("quiz").style.display="block";
+    document.getElementById("quiz").scrollIntoView({behavior:"smooth"});
+}
+
+function correggi(){
+    let punti=0;
+
+    ["q1","q2","q3"].forEach(function(q){
+        let risposta=document.querySelector('input[name="'+q+'"]:checked');
+        if(risposta && risposta.value=="1"){
+            punti++;
+        }
+    });
+
+    document.getElementById("risultato").innerHTML=
+    "Hai ottenuto <strong>"+punti+"/3</strong> risposte corrette.";
+}
+</script>
+
+</body>
+</html>
